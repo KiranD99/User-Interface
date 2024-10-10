@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Itim:wght@300;400;500;600;700&family=Sassy+Frass:wght@400;500;600&family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="{%static 'css/main.css'%}" rel="stylesheet" />
+    <link href="{%static 'css/navigation.css'%}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="db-form" id="db-form">
+      <div class="db-box">
+        <form method="post" action="../../home/" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group" id="form-name">
+            <label for="name">Title </label>
+            {{form.name}}
+          </div>
+          <div class="form-group">
+            <label for="image">Description</label>
+            {{form.description}}
+          </div>
+          <div class="form-group">
+            <label for="image">price</label>
+            {{form.price}}
+          </div>
+          <div class="form-group">
+            <label for="images">Images</label>
+            <div class="upload-btn-wrapper">
+              <button type="button" class="btn">Upload a file</button>
+              {{form.image}}
+            </div>
+          </div>
+          <button class="post-button" type="submit">post</button>
+        </form>
+      </div>
+    </div>
+    <form id="forms" method="POST">
+      {% csrf_token %}
+      <div class="main">
+        <h2>HomeQuest</h2>
+        <div class="search-box">
+          <div class="main-search">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Your dreams are a search away"
+            />
+            <button type="submit" id="jii">search</button>
+          </div>
+        </div>
+        <div class="contribute">
+          <div class="contribute-Text-box">
+            <p class="contribute-Text">“Unlock the value of your property”</p>
+          </div>
+          <div class="contribute-button-box">
+            <button
+              type="button"
+              onclick="contribute()"
+              class="contribute-button"
+            >
+              Rent/sell
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="cards-container">
+      {%for i in data%}
+      <div class="card">
+        <img src="{{i.image}}" alt="Property Image" />
+        <div class="card-body">
+          <h3 class="card-title">{{i.name}}</h3>
+          <p class="card-cost">>{{i.price}}</p>
+          <p class="card-description">{{i.description}}</p>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </body>
+  <script src="{% static 'javascript/main.js' %}"></script>
+</html>

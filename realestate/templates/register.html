@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{%static 'css/registration.css'%}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form method="POST">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">UserName</span>
+              {{form.username}}
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              {{form.email}}
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              {{form.password1}}
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              {{form.password2}}
+            </div>
+          </div>
+          <div class="submission">
+            <button class="button-1" role="button">register</button>
+            <a class="button-1" role="button" href="../login/">login</a>
+          </div>
+        </form>
+        <div id="content">
+          (<!--prettier-ignore-->) 
+          {% include 'messages.html' %} {% block content %} {% endblock content%}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
