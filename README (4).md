@@ -27,13 +27,13 @@ This project is a web-based platform that allows users to view, search, and expl
 - JavaScript
 
 ### Backend:
-- Node.js / Python / Java / Golang (Choose the one you used)
+- Django
 
 ### Database:
-- MySQL / PostgreSQL / MongoDB (Choose the one you used)
+- MySQL 
 
 ### AI/ML Tools:
-- Python (TensorFlow / PyTorch)
+- Python (PyTorch)
 
 
 ## Installation
